@@ -44,7 +44,7 @@ app.get('/todos/products/:productID/reviews/:reviewID', (req, res) => {
 });
 
 
-app.all('*', (_require, res) => {
+app.all('*', (req, res) => {
     res.status(404).send('<h2>page is not found</h2>');
 })
 
