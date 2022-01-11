@@ -43,7 +43,7 @@ app.post('/login', (req, res) => {
   res.status(401).send('Please Provide Credentials')
 })
 
-//
+//To change or update the information 
 app.put('/api/people/:id', (req, res) => {
   const { id } = req.params
   const { name } = req.body
