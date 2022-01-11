@@ -64,6 +64,7 @@ app.put('/api/people/:id', (req, res) => {
   res.status(200).json({ success: true, data: newPeople })
 })
 
+//To delete by id
 app.delete('/api/people/:id', (req, res) => {
   const person = people.find((person) => person.id === Number(req.params.id))
   if (!person) {
