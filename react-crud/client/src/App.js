@@ -62,6 +62,10 @@ function App() {
 })
 }
 
+const deleteEmployee = (id) =>{
+  Axios.delete()
+}
+
 return (
   <div className="App container">
     <h1>Employee Information</h1>
@@ -131,6 +135,7 @@ return (
                   }}
                 />
                 <button className="btn btn-warning" onClick={() => { updateEmployeeSalary(val.EmployeeID) }}>Update</button>
+                <button className="btn btn-danger" onClick={() => { deleteEmployee(val.EmployeeID) }}>Delete</button>
               </div>
             </div>
           </div>
