@@ -57,9 +57,9 @@ app.put('/update',(req,res) => {
 });
 })
 
-app.delete('/delete/:id', (req,res) => {
-    const id = req.params.id;
-    db.query("Delete FROM employee WHERE id = ?", id, (err, result) => {
+app.delete('/delete/:EmployeeID ', (req,res) => {
+    const EmployeeID  = req.params.EmployeeID;
+    db.query("DELETE FROM employee WHERE EmployeeID = ?", EmployeeID, (err, result) => {
         if (err){
             console.log(err);
         } else {

@@ -62,11 +62,11 @@ function App() {
 })
 }
 
-const deleteEmployee = (id) =>{
-  Axios.delete(`http://localhost:3001/delete${id}`).then((response) =>{
+const deleteEmployee = (EmployeeID) =>{
+  Axios.delete(`http://localhost:3001/delete${EmployeeID}`).then(() =>{
     setEmployeeList(
       employeeList.filter((val) => {
-        return val.id !== id;
+        return val.id !== EmployeeID;
       })
     )
   })
