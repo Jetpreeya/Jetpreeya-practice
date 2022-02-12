@@ -44,11 +44,14 @@ function App() {
   }
 
   const updateEmployeeSalary = (EmployeeID) => {
-    Axios.put("http://localhost:3001/update", 
+   // console.log("uppdating");
+    Axios.put('http://localhost:3001/update', 
     { salary: NewSalary, EmployeeID: EmployeeID }).then((response) => {
       setEmployeeList(
        employeeList.map((val) => {
-    return val.EmployeeID === EmployeeID ? {
+     //   console.log("uppdating2");
+    return val.EmployeeID === EmployeeID 
+    ? {
       EmployeeID: val.EmployeeID,
       FirstName: val.FirstName,
       LastName: val.LastName,
@@ -56,21 +59,34 @@ function App() {
       Email: val.Email,
       StartworkDate: val.StartworkDate,
       Salary: NewSalary
-    } : val;
-  })
-)
-})
+    } 
+    : val;
+   
+  })  
+);
+
 }
 
+);
+};
+
 const deleteEmployee = (EmployeeID) =>{
-  Axios.delete(`http://localhost:3001/delete${EmployeeID}`).then(() =>{
+   //Alert Do you want to delet ..
+  //console.log("hello delete");´`http://localhost:3001/delete/${id}`
+  Axios.delete(`http://localhost:3001/delete/${EmployeeID}`).then(() =>{
+   // console.log("hello delete2");
     setEmployeeList(
       employeeList.filter((val) => {
+        console.log(EmployeeID);
         return val.id !== EmployeeID;
       })
     )
+    //delay 
+    //Alert
+    getEmployees();
   })
 }
+
 
 return (
   <div className="App container">

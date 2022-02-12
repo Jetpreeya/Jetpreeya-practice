@@ -49,17 +49,20 @@ app.put('/update',(req,res) => {
     const Salary = req.body.Salary;
     db.query("UPDATE employee SET Salary = ? WHERE EmployeeID = ?" , [Salary, EmployeeID], (err,result) => {
         if (err){
+            console.log(Salary, EmployeeID);
             console.log(err);
+         
         } else {
+            console.log(result);
             res.send(result);
         }
     
 });
 })
 
-app.delete('/delete/:EmployeeID ', (req,res) => {
+app.delete("/delete/:EmployeeID", (req,res) => {
     const EmployeeID  = req.params.EmployeeID;
-    db.query("DELETE FROM employee WHERE EmployeeID = ?", EmployeeID, (err, result) => {
+    db.query("DELETE FROM employee WHERE EmployeeID = ?", [EmployeeID], (err, result) => {
         if (err){
             console.log(err);
         } else {
