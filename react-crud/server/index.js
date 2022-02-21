@@ -44,26 +44,23 @@ app.post('/create', (req, res) => {
     );
 })
 
-app.put('/update',(req,res) => {
+app.put("/update/:EmployeeID", (req, res) => {
     const EmployeeID = req.body.EmployeeID;
     const Salary = req.body.Salary;
-    db.query("UPDATE employee SET Salary = ? WHERE EmployeeID = ?" , [Salary, EmployeeID], (err,result) => {
-        if (err){
-            console.log(Salary, EmployeeID);
+    db.query("UPDATE employee SET Salary = ? WHERE EmployeeID = ?", [Salary, EmployeeID], (err, result) => {
+        if (err) {
             console.log(err);
-         
         } else {
-            console.log(result);
             res.send(result);
         }
-    
+    }
+    );
 });
-})
 
-app.delete("/delete/:EmployeeID", (req,res) => {
-    const EmployeeID  = req.params.EmployeeID;
+app.delete("/delete/:EmployeeID", (req, res) => {
+    const EmployeeID = req.params.EmployeeID;
     db.query("DELETE FROM employee WHERE EmployeeID = ?", [EmployeeID], (err, result) => {
-        if (err){
+        if (err) {
             console.log(err);
         } else {
             res.send(result);

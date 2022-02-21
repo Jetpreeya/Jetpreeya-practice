@@ -44,13 +44,13 @@ function App() {
   }
 
   const updateEmployeeSalary = (EmployeeID) => {
-   // console.log("uppdating");
-    Axios.put('http://localhost:3001/update', 
+   // console.log("updating");
+    Axios.put("http://localhost:3001/update", 
     { salary: NewSalary, EmployeeID: EmployeeID }).then((response) => {
       setEmployeeList(
-       employeeList.map((val) => {
-     //   console.log("uppdating2");
-    return val.EmployeeID === EmployeeID 
+       employeeList.map((val) => 
+       {
+    return val.EmployeeID == EmployeeID 
     ? {
       EmployeeID: val.EmployeeID,
       FirstName: val.FirstName,
@@ -58,9 +58,10 @@ function App() {
       Gender: val.Gender,
       Email: val.Email,
       StartworkDate: val.StartworkDate,
-      Salary: NewSalary
-    } 
-    : val;
+      Salary: NewSalary,
+    }  
+    : val; 
+    
    
   })  
 );
@@ -120,8 +121,8 @@ return (
         </div>
 
         <div className="mb-3">
-          <label htmlFor="salary" className="form-label">Salary : </label>
-          <input type="number" className="form-control" placeholder="Enter salary" onChange={(event) => { setSalary(event.target.value) }} />
+          <label htmlFor="salary">Salary : </label>
+          <input type="text" className="form-control" placeholder="Enter salary" onChange={(event) => { setSalary(event.target.value) }} />
         </div>
 
         <div className="mb-3">
@@ -148,10 +149,11 @@ return (
               <p className="card-text">Salary : {val.Salary}</p>
               <p className="card-text">StartWorkDate : {val.StartWorkDate}</p>
               <div className="d-flex">
-                <input type="number"
-                  style={{ width: "250px" }}
-                  placeholder="15000..."
+                <input 
                   className="form-control"
+                  style={{ width: "250px" }}
+                  type="text"
+                  placeholder="15000..."
                   onChange={(event) => {
                     setNewSalary(event.target.value)
                   }}
@@ -161,11 +163,11 @@ return (
               </div>
             </div>
           </div>
-        )
+        );
       })}
     </div>
   </div>
 );
-    };
+    }
 
 export default App;
